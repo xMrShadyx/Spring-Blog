@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         User foundUser = findById(id);
         User updatedUser = User.builder()
                 .user_id(foundUser.getUser_id())
-                .username(user.getUsername())
+                .userName(user.getUserName())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())

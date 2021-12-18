@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.security.Timestamp;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,7 +23,7 @@ public class Post {
     private Long post_id;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String postTitle;
 
     @OneToOne
@@ -37,10 +37,10 @@ public class Post {
 
     @NotNull
     @Column(nullable = false)
-    private Timestamp createDate;
+    private LocalDateTime createDate;
 
     @Length
     @NotNull
-    @Length(min = 10, max = 2000, message = "Your message should in range between 10 and 2000 characters")
+    @Length(min = 10, max = 255, message = "Your message should in range between 10 and 255 characters")
     private String message;
 }

@@ -21,7 +21,7 @@ public class PostTopic {
     private Long topic_id;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String topicName;
 
 }

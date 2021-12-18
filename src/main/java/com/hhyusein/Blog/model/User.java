@@ -21,8 +21,8 @@ public class User {
     private Long user_id;
 
     @NotNull
-    @Column(nullable = false)
-    private String username;
+    @Column(nullable = false, unique = true)
+    private String userName;
 
     @NotNull
     @Column(nullable = false)
@@ -33,6 +33,6 @@ public class User {
     private String lastName;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 }
