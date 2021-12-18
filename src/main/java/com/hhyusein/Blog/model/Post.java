@@ -26,7 +26,8 @@ public class Post {
     @Column(nullable = false, unique = true)
     private String postTitle;
 
-    @OneToOne
+    @NotNull
+    @ManyToOne
     @JoinColumn(name = "topic_id", foreignKey = @ForeignKey(name = "fk_topic_id"))
     private PostTopic topic_id;
 
