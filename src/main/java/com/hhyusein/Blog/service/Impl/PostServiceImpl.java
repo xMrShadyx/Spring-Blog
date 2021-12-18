@@ -37,6 +37,7 @@ public class PostServiceImpl implements PostService {
         Post foundPost = findById(id);
         Post updatedPost = Post.builder()
                 .post_id(foundPost.getPost_id())
+                .user_id(foundPost.getUser_id())
                 .postTitle(post.getPostTitle())
                 .createDate(post.getCreateDate())
                 .message(post.getMessage())

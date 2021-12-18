@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface PostTopicRepository extends JpaRepository<PostTopic, Long> {
-    Optional<PostTopic> findByTopicName(String topicName);
+
 }
