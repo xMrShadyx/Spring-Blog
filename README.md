@@ -1,5 +1,5 @@
-#Recommended Order: <br>
-#1 Topics:
+#Recommended Order: <br><br>
+#1 Topics:<br>
 PUT METHOD: localhost:8080/topics "Inserting item via json by the example"<br>
 GET METHOD: localhost:8080/topics "Shows all topics"<br>
 GET METHOD: localhost:8080/topics/id "Shows topics by id"<br>
@@ -12,7 +12,7 @@ DELETE METHOD: localhost:8080/topics/id "Deletes the topic by id"<br>
     }
 ```
 
-#2 Users:
+#2 Users:<br>
 PUT METHOD: localhost:8080/users "Inserting item via json by the example"<br>
 GET METHOD: localhost:8080/users "Shows all Users"<br>
 GET METHOD: localhost:8080/users/id "Shows users by id"<br>
@@ -27,7 +27,7 @@ DELETE METHOD: localhost:8080/users/id "Deletes the user by id"<br>
     }
 ```
 
-#3 Posts:
+#3 Posts:<br>
 PUT METHOD: localhost:8080/posts "Inserting item via json by the example"<br>
 GET METHOD: localhost:8080/posts "Shows all posts"<br>
 GET METHOD: localhost:8080/posts/id "Shows posts by id"<br>
