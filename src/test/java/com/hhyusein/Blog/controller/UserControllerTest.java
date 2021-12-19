@@ -60,4 +60,57 @@ public class UserControllerTest extends BaseControllerTest{
                 .andExpect(jsonPath("$.userName", is("testUser")));
     }
 
+    @Test
+    public void findById() throws Exception {
+        when(userService.findById(any(Long.class))).thenReturn(User.builder().build());
+        when(userConverter.toUserDto(any(User.class))).thenReturn(UserDto.builder()
+                .user_id(1L)
+                .email("test@test.com")
+                .firstName("firstTestUser")
+                .lastName("lastTestUser")
+                .userName("testUser")
+                .build());
+
+        mockMvc.perform(get("/users/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.user_id", is(1)))
+                .andExpect(jsonPath("$.email", is("test@test.com")))
+                .andExpect(jsonPath("$.firstName", is("firstTestUser")))
+                .andExpect(jsonPath("$.lastName", is("lastTestUser")))
+                .andExpect(jsonPath("$.userName", is("testUser")));
+    }
+
+    @Test
+    public void deleteUser() throws Exception {
+        mockMvc.perform(delete("/users/1"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void updateUser() throws Exception {
+        UserDto userDto = UserDto.builder()
+                .user_id(1L)
+                .email("test@test.com")
+                .firstName("firstTestUser")
+                .lastName("lastTestUser")
+                .userName("testUser")
+                .build();
+
+        String reqJson = objectMapper.writeValueAsString(userDto);
+
+        when(userConverter.toUserDto(any())).thenReturn(userDto);
+
+        mockMvc.perform(put("/users/1")
+                .content(reqJson)
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.user_id", is(1)))
+                .andExpect(jsonPath("$.email", is("test@test.com")))
+                .andExpect(jsonPath("$.firstName", is("firstTestUser")))
+                .andExpect(jsonPath("$.lastName", is("lastTestUser")))
+                .andExpect(jsonPath("$.userName", is("testUser")));
+    }
 }
