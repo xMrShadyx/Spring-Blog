@@ -1,1 +1,2 @@
-Something to add here later on.
+ERR Diagram:<br>
+![](EERDiagram.png)
