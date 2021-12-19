@@ -7,6 +7,7 @@ import com.hhyusein.Blog.service.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -28,8 +29,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<List<Post>> findAll() {
-        return Collections.singletonList(postRepository.findAll());
+    public List<Post> findAll() {
+        return new ArrayList<>(postRepository.findAll());
     }
 
     @Override

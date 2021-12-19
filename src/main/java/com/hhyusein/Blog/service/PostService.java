@@ -10,7 +10,7 @@ public interface PostService {
 
     Post save(Post post);
 
-    List<List<Post>> findAll();
+    List<Post> findAll();
 
     Post update(Post post, Long id);
 

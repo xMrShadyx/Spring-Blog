@@ -11,4 +11,5 @@ public interface PostTopicService {
     PostTopic save(PostTopic postTopic);
     PostTopic update(PostTopic postTopic, Long id);
     void delete(Long id);
+
 }
