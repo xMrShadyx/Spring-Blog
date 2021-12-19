@@ -1,5 +1,6 @@
 package com.hhyusein.Blog.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -38,10 +39,16 @@ public class Post {
 
     @NotNull
     @Column(nullable = false)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDateTime createDate;
 
     @Length
     @NotNull
     @Length(min = 10, max = 255, message = "Your message should in range between 10 and 255 characters")
     private String message;
+
+    @PrePersist
+    private void postCreatedAt() {
+        createDate = LocalDateTime.now();
+    }
 }
