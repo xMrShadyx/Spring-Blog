@@ -1,10 +1,12 @@
 package com.hhyusein.Blog.service.Impl;
 
+import com.hhyusein.Blog.exception.DuplicateRecordException;
 import com.hhyusein.Blog.exception.ResourceNotFoundException;
 import com.hhyusein.Blog.model.User;
 import com.hhyusein.Blog.repository.UserRepository;
 import com.hhyusein.Blog.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +30,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) {
-        return userRepository.save(user);
+        try {
+            return userRepository.save(user);
+        } catch (DataIntegrityViolationException ex) {
+            throw new DuplicateRecordException(String.format("User with this ID %d already exists.", user.getUser_id()));
+        }
     }
 
     @Override

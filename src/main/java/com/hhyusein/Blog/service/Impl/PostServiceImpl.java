@@ -1,10 +1,12 @@
 package com.hhyusein.Blog.service.Impl;
 
+import com.hhyusein.Blog.exception.DuplicateRecordException;
 import com.hhyusein.Blog.exception.ResourceNotFoundException;
 import com.hhyusein.Blog.model.Post;
 import com.hhyusein.Blog.repository.PostRepository;
 import com.hhyusein.Blog.service.PostService;
 import lombok.AllArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,7 +27,11 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Post save(Post post) {
-        return postRepository.save(post);
+        try {
+            return postRepository.save(post);
+        } catch (DataIntegrityViolationException ex) {
+            throw new DuplicateRecordException(String.format("Post with ID: %d already exists.", post.getPost_id()));
+        }
     }
 
     @Override

@@ -1,10 +1,12 @@
 package com.hhyusein.Blog.service.Impl;
 
+import com.hhyusein.Blog.exception.DuplicateRecordException;
 import com.hhyusein.Blog.exception.ResourceNotFoundException;
 import com.hhyusein.Blog.model.PostTopic;
 import com.hhyusein.Blog.repository.PostTopicRepository;
 import com.hhyusein.Blog.service.PostTopicService;
 import lombok.AllArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +30,11 @@ public class PostTopicServiceImpl implements PostTopicService {
 
     @Override
     public PostTopic save(PostTopic postTopic) {
-        return postTopicRepository.save(postTopic);
+        try {
+            return postTopicRepository.save(postTopic);
+        } catch (DataIntegrityViolationException ex) {
+            throw new DuplicateRecordException(String.format("Topic with ID: %d already exists.", postTopic.getTopic_id()));
+        }
     }
 
     @Override

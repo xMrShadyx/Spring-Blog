@@ -1,4 +1,4 @@
-package com.hhyusein.Blog.controller;
+package com.hhyusein.Blog.repository.controller;
 
 import com.hhyusein.Blog.converter.PostConverter;
 import com.hhyusein.Blog.dto.PostDto;
