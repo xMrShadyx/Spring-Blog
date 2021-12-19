@@ -9,15 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Builder
-public class userDto {
+public class PostTopicDto {
 
-    private Long user_id;
+    private Long topic_id;
 
-    private String userName;
+    private String topicName;
 
-    private String firstName;
 
-    private String lastName;
-
-    private String email;
 }

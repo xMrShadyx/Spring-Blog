@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Builder
-public class postDto {
+public class PostDto {
 
     private Long post_id;
 
