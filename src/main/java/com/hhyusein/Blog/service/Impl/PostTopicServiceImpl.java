@@ -32,7 +32,7 @@ public class PostTopicServiceImpl implements PostTopicService {
     public PostTopic save(PostTopic postTopic) {
         try {
             return postTopicRepository.save(postTopic);
-        } catch (DataIntegrityViolationException ex) {
+        } catch (DataIntegrityViolationException exception) {
             throw new DuplicateRecordException(String.format("Topic with ID: %d already exists.", postTopic.getTopic_id()));
         }
     }
