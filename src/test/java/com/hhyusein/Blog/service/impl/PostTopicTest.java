@@ -1,4 +1,4 @@
-package com.hhyusein.Blog.service;
+package com.hhyusein.Blog.service.impl;
 
 import com.hhyusein.Blog.exception.DuplicateRecordException;
 import com.hhyusein.Blog.exception.ResourceNotFoundException;
