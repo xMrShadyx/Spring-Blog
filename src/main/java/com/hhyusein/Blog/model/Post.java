@@ -27,18 +27,14 @@ public class Post {
     @Column(nullable = false, unique = true)
     private String postTitle;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "topic_id", foreignKey = @ForeignKey(name = "fk_topic_id"))
     private PostTopic topic_id;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_user_id"))
     private User user_id;
 
-    @NotNull
-    @Column(nullable = false)
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDateTime createDate;
 
